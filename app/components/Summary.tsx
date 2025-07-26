@@ -1,11 +1,19 @@
+import { memo, useCallback, useMemo } from "react";
 import ScoreGauge from "~/components/ScoreGauge";
 import ScoreBadge from "~/components/ScoreBadge";
 import BlurText from "~/components/slick-components/BlurText";
 
-const Category = ({ title, score }: { title: string, score: number }) => {
-    const textColor = score > 70 ? 'text-accent-green'
-            : score > 49
-        ? 'text-accent-yellow' : 'text-accent-red';
+interface CategoryProps {
+    title: string;
+    score: number;
+}
+
+const Category = memo(({ title, score }: CategoryProps) => {
+    const textColor = useMemo(() => {
+        return score > 70 ? 'text-accent-green'
+            : score > 49 ? 'text-accent-yellow'
+                : 'text-accent-red';
+    }, [score]);
 
     return (
         <div className="group">
@@ -25,18 +33,38 @@ const Category = ({ title, score }: { title: string, score: number }) => {
                 </div>
             </div>
         </div>
-    )
+    );
+});
+
+Category.displayName = 'Category';
+
+interface SummaryProps {
+    feedback: Feedback;
 }
 
-const Summary = ({ feedback }: { feedback: Feedback }) => {
+const Summary = memo(({ feedback }: SummaryProps) => {
+    // Memoize performance message to avoid recalculation
+    const performanceMessage = useMemo(() => {
+        const score = feedback.overallScore;
+        return score > 70
+            ? 'Excellent performance! Your resume is well-optimized.'
+            : score > 50
+                ? 'Good foundation with room for improvement.'
+                : 'Consider focusing on the highlighted areas for better results.';
+    }, [feedback.overallScore]);
+
+    // Memoize animation complete callback
+    const handleAnimationComplete = useCallback(() => {
+        // Could trigger analytics or other side effects
+        console.log('Summary animation completed');
+    }, []);
+
     return (
         <div className="gradient-border glass-shadow animate-fade-in">
             {/* Header Section */}
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 p-8 border-b border-dark-700/50">
                 <div className="flex-shrink-0">
-                    <div className="relative">
-                        <ScoreGauge score={feedback.overallScore} />
-                    </div>
+                    <ScoreGauge score={feedback.overallScore} />
                 </div>
 
                 <div className="flex-1 text-center lg:text-left">
@@ -45,7 +73,8 @@ const Summary = ({ feedback }: { feedback: Feedback }) => {
                         delay={100}
                         animateBy="words"
                         direction="top"
-                        className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-silver-100 via-accent-blue to-silver-100 mb-3"
+                        className="text-3xl font-bold text-gradient-purple-flow mb-3"
+                        onAnimationComplete={handleAnimationComplete}
                     />
                     <BlurText
                         text="This comprehensive score is calculated based on multiple factors including content quality, structure optimization, tone analysis, and skills presentation."
@@ -73,7 +102,7 @@ const Summary = ({ feedback }: { feedback: Feedback }) => {
                     />
                     <p className="text-silver-400 text-sm">Each category contributes to your overall resume effectiveness</p>
                 </div>
-                
+
                 <div className="space-y-4">
                     <Category title="Tone & Style" score={feedback.toneAndStyle.score} />
                     <Category title="Content" score={feedback.content.score} />
@@ -86,14 +115,15 @@ const Summary = ({ feedback }: { feedback: Feedback }) => {
                     <div className="flex items-center gap-3">
                         <div className="w-3 h-3 rounded-full bg-accent-green animate-pulse"></div>
                         <span className="text-sm text-silver-300 font-medium">
-                            {feedback.overallScore > 70 ? 'Excellent performance! Your resume is well-optimized.' :
-                             feedback.overallScore > 50 ? 'Good foundation with room for improvement.' :
-                             'Consider focusing on the highlighted areas for better results.'}
+                            {performanceMessage}
                         </span>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
-export default Summary
+    );
+});
+
+Summary.displayName = 'Summary';
+
+export default Summary;

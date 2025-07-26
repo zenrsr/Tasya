@@ -4,8 +4,8 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   /* Dark theme colors */
   --color-black: #000000;
   --color-dark-950: #0a0a0a;
@@ -14,14 +14,14 @@
   --color-dark-700: #3a3a3a;
   --color-dark-600: #4a4a4a;
   --color-dark-500: #5a5a5a;
-  
+
   /* Silver/white accents */
   --color-silver-100: #f5f5f5;
   --color-silver-200: #e5e5e5;
   --color-silver-300: #d4d4d4;
   --color-silver-400: #a3a3a3;
   --color-silver-500: #737373;
-  
+
   /* Accent colors */
   --color-accent-blue: #0070f3;
   --color-accent-blue-hover: #0066e0;
@@ -38,7 +38,7 @@
   --color-badge-green-text: #00d9a5;
   --color-badge-red-text: #ff4757;
   --color-badge-yellow-text: #ffa502;
-  
+
   /* Glass effect */
   --glass-bg: rgba(26, 26, 26, 0.8);
   --glass-border: rgba(255, 255, 255, 0.1);
@@ -46,7 +46,8 @@
 
 html,
 body {
-  @apply bg-black text-silver-100;
+  @apply text-silver-100;
+  background: #0f172a;
   scroll-behavior: smooth;
 }
 
@@ -55,7 +56,7 @@ main {
 }
 
 h1 {
-  @apply text-6xl text-gradient leading-tight tracking-[-2px] font-bold;
+  @apply text-6xl leading-tight tracking-[-2px] font-bold;
 }
 
 h2 {
@@ -80,9 +81,47 @@ form {
 
 @layer components {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-silver-100 via-accent-blue to-silver-100;
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 20%, #8b5cf6 40%, #6d28d9 60%, #e0e7ff 80%, #ffffff 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease-in-out infinite;
   }
-  
+
+  .text-gradient-modern {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 10%, #ddd6fe 25%, #8b5cf6 50%, #6d28d9 75%, #f8fafc 90%, #ffffff 100%);
+    background-size: 300% 300%;
+    animation: gradient-flow 12s ease-in-out infinite;
+  }
+
+  .text-gradient-hero {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 15%, #ddd6fe 30%, #8b5cf6 50%, #6d28d9 70%, #f1f5f9 85%, #ffffff 100%);
+    background-size: 400% 400%;
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
+  }
+
+  .text-gradient-blur-safe {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #ddd6fe 40%, #8b5cf6 50%, #ddd6fe 60%, #f8fafc 75%, #ffffff 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+  }
+
+  .text-gradient-purple-flow {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 15%, #ddd6fe 30%, #8b5cf6 50%, #6d28d9 70%, #f8fafc 85%, #ffffff 100%);
+    background-size: 300% 300%;
+    animation: gradient-flow 10s ease-in-out infinite;
+  }
+
+  .text-gradient-dark-contrast {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 30%, #8b5cf6 60%, #ffffff 100%);
+    background-size: 200% 200%;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
   .gradient-border {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
@@ -90,38 +129,39 @@ form {
     -webkit-backdrop-filter: blur(20px);
     @apply p-4 rounded-xl border-silver-200/20;
   }
-  
+
   .primary-button {
     @apply bg-gradient-to-r from-accent-blue to-accent-purple text-white rounded-xl px-6 py-3 cursor-pointer transition-all duration-200 hover:shadow-lg hover:shadow-accent-blue/25 font-medium border border-transparent hover:border-silver-200/20;
   }
-  
+
   .resume-nav {
     @apply flex flex-row justify-between items-center p-4 border-b border-dark-700;
   }
-  
+
   .resume-summary {
     @apply flex flex-row items-center justify-center p-4 gap-4;
+
     .category {
       @apply flex flex-row gap-2 items-center bg-dark-900 border border-dark-700 rounded-xl p-4 w-full justify-between hover:border-silver-400/30 transition-all duration-200;
     }
   }
-  
+
   .back-button {
     @apply flex flex-row items-center gap-2 border border-dark-700 rounded-lg p-2 bg-dark-900 hover:border-silver-400/50 transition-all duration-200 text-silver-200;
   }
-  
+
   .auth-button {
     @apply bg-gradient-to-r from-accent-blue to-accent-purple rounded-xl py-4 px-8 cursor-pointer w-[600px] max-md:w-full text-2xl font-semibold text-white hover:shadow-lg hover:shadow-accent-blue/25 transition-all duration-200 border border-transparent hover:border-silver-200/20;
   }
-  
+
   .main-section {
     @apply flex flex-col items-center gap-8 mx-15 pb-5;
   }
-  
+
   .page-heading {
     @apply flex flex-col items-center gap-8 max-w-4xl text-center;
   }
-  
+
   .resumes-section {
     @apply flex flex-wrap max-lg:flex-col gap-6 items-start w-full max-w-[1850px] justify-evenly;
   }
@@ -157,55 +197,55 @@ form {
   .uplader-drag-area {
     @apply relative p-8 text-center transition-all duration-300 cursor-pointer bg-dark-900 border-2 border-dashed border-dark-700 rounded-xl min-h-[208px] hover:border-accent-blue/50 hover:bg-dark-800;
   }
-  
+
   .uploader-selected-file {
     @apply flex items-center justify-between p-3 bg-dark-800 border border-dark-600 rounded-xl;
   }
-  
+
   .matte-card {
     @apply bg-dark-950 border border-dark-700 rounded-xl p-6 hover:border-silver-400/30 transition-all duration-200;
   }
-  
+
   .silver-accent {
     @apply text-silver-200 border-silver-300;
   }
-  
+
   .glow-effect {
     box-shadow: 0 0 20px rgba(0, 112, 243, 0.3);
   }
-  
+
   /* Dark theme SVG icon filters */
   .dark-icon {
     filter: brightness(0) saturate(100%) invert(87%) sepia(8%) saturate(317%) hue-rotate(202deg) brightness(95%) contrast(96%);
   }
-  
+
   .warning-icon {
     filter: brightness(0) saturate(100%) invert(70%) sepia(51%) saturate(558%) hue-rotate(11deg) brightness(103%) contrast(101%);
   }
-  
+
   .success-icon {
     filter: brightness(0) saturate(100%) invert(64%) sepia(98%) saturate(3207%) hue-rotate(130deg) brightness(119%) contrast(119%);
   }
-  
+
   /* Loading animation improvements */
   .loading-gif {
     @apply opacity-80 animate-pulse;
   }
-  
+
   /* Enhanced scrollbar for dark theme */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: var(--color-dark-800);
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: var(--color-dark-600);
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-silver-400);
   }
@@ -234,7 +274,7 @@ form {
 }
 
 @utility glass-shadow {
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
@@ -244,6 +284,7 @@ form {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -255,9 +296,42 @@ form {
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-flow {
+
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+
+  25% {
+    background-position: 100% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  75% {
+    background-position: 0% 100%;
   }
 }
 
@@ -267,4 +341,41 @@ form {
 
 .animate-slide-in {
   animation: slideIn 0.3s ease-out;
+}
+
+.darkveil-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.darkveil-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.darkveil-gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      #0f172a 0%,
+      #1e293b 25%,
+      #334155 50%,
+      #1e293b 75%,
+      #0f172a 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+.bg-gradient {
+  position: relative;
 }

@@ -1,5 +1,5 @@
 import { motion, type Transition } from 'framer-motion';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 
 type BlurTextProps = {
   text?: string;
@@ -46,25 +46,45 @@ const BlurText: React.FC<BlurTextProps> = ({
   onAnimationComplete,
   stepDuration = 0.35,
 }) => {
-  const elements = animateBy === 'words' ? text.split(' ') : text.split('');
+  // Memoize text splitting to avoid recalculation
+  const elements = useMemo(() => {
+    if (!text) return [];
+    return animateBy === 'words' ? text.split(' ') : text.split('');
+  }, [text, animateBy]);
+
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLParagraphElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Optimize intersection observer
+  const handleIntersection = useCallback(([entry]: IntersectionObserverEntry[]) => {
+    if (entry.isIntersecting && !inView) {
+      setInView(true);
+      // Disconnect observer after first trigger for performance
+      if (observerRef.current && ref.current) {
+        observerRef.current.unobserve(ref.current);
+      }
+    }
+  }, [inView]);
 
   useEffect(() => {
     if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(ref.current as Element);
-        }
-      },
-      { threshold, rootMargin }
-    );
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [threshold, rootMargin]);
+    
+    observerRef.current = new IntersectionObserver(handleIntersection, { 
+      threshold, 
+      rootMargin 
+    });
+    
+    observerRef.current.observe(ref.current);
+    
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [handleIntersection, threshold, rootMargin]);
 
+  // Memoize animation configurations
   const defaultFrom = useMemo(
     () =>
       direction === 'top'
@@ -88,11 +108,20 @@ const BlurText: React.FC<BlurTextProps> = ({
   const fromSnapshot = animationFrom ?? defaultFrom;
   const toSnapshots = animationTo ?? defaultTo;
 
-  const stepCount = toSnapshots.length + 1;
-  const totalDuration = stepDuration * (stepCount - 1);
-  const times = Array.from({ length: stepCount }, (_, i) =>
-    stepCount === 1 ? 0 : i / (stepCount - 1)
-  );
+  // Memoize animation timing
+  const { stepCount, totalDuration, times } = useMemo(() => {
+    const stepCount = toSnapshots.length + 1;
+    const totalDuration = stepDuration * (stepCount - 1);
+    const times = Array.from({ length: stepCount }, (_, i) =>
+      stepCount === 1 ? 0 : i / (stepCount - 1)
+    );
+    return { stepCount, totalDuration, times };
+  }, [toSnapshots.length, stepDuration]);
+
+  // Optimize render - don't render if no text
+  if (!text || elements.length === 0) {
+    return null;
+  }
 
   return (
     <p
@@ -107,12 +136,12 @@ const BlurText: React.FC<BlurTextProps> = ({
           duration: totalDuration,
           times,
           delay: (index * delay) / 1000,
+          ease: easing,
         };
-        (spanTransition as any).ease = easing;
 
         return (
           <motion.span
-            key={index}
+            key={`${segment}-${index}`}
             initial={fromSnapshot}
             animate={inView ? animateKeyframes : fromSnapshot}
             transition={spanTransition}

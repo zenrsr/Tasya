@@ -1,9 +1,19 @@
 import {Link, useNavigate, useParams} from "react-router";
-import {useEffect, useState} from "react";
+import {useEffect, useState, lazy, Suspense} from "react";
 import {usePuterStore} from "~/lib/puter";
-import Summary from "~/components/Summary";
-import ATS from "~/components/ATS";
-import Details from "~/components/Details";
+
+// Lazy load heavy components for better performance
+const Summary = lazy(() => import("~/components/Summary"));
+const ATS = lazy(() => import("~/components/ATS"));
+const Details = lazy(() => import("~/components/Details"));
+
+// Loading fallback component
+const ComponentLoader = () => (
+    <div className="animate-pulse bg-dark-800/50 border border-dark-700/50 rounded-xl p-8">
+        <div className="h-4 bg-dark-700 rounded w-3/4 mb-4"></div>
+        <div className="h-4 bg-dark-700 rounded w-1/2"></div>
+    </div>
+);
 
 export const meta = () => ([
     { title: 'Tasya AI | Resume Analysis' },
@@ -45,7 +55,6 @@ const Resume = () => {
             setImageUrl(imageUrl);
 
             setFeedback(data.feedback);
-            console.log({resumeUrl, imageUrl, feedback: data.feedback });
         }
 
         loadResume();
@@ -140,6 +149,7 @@ const Resume = () => {
                                             className="w-full h-full object-contain rounded-xl hover:scale-[1.02] transition-transform duration-300"
                                             title="Click to open full PDF"
                                             alt="Resume preview"
+                                            loading="lazy"
                                         />
                                     </a>
                                 </div>
@@ -158,7 +168,7 @@ const Resume = () => {
                             <div className="flex flex-col items-center justify-center space-y-4">
                                 <div className="relative">
                                     <div className="absolute inset-0 bg-accent-blue/20 rounded-full blur-xl animate-pulse"></div>
-                                    <img src="/images/resume-scan-2.gif" className="relative w-[200px] opacity-80" />
+                                    <img src="/images/resume-scan-2.gif" className="relative w-[200px] opacity-80" alt="Loading" />
                                 </div>
                                 <div className="text-center">
                                     <h3 className="text-xl font-semibold text-silver-200 mb-2">Loading resume...</h3>
@@ -189,15 +199,21 @@ const Resume = () => {
                         
                         {feedback ? (
                             <div className="space-y-8 animate-fade-in">
-                                <Summary feedback={feedback} />
-                                <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []} />
-                                <Details feedback={feedback} />
+                                <Suspense fallback={<ComponentLoader />}>
+                                    <Summary feedback={feedback} />
+                                </Suspense>
+                                <Suspense fallback={<ComponentLoader />}>
+                                    <ATS score={feedback.ATS.score || 0} suggestions={feedback.ATS.tips || []} />
+                                </Suspense>
+                                <Suspense fallback={<ComponentLoader />}>
+                                    <Details feedback={feedback} />
+                                </Suspense>
                             </div>
                         ) : (
                             <div className="flex flex-col items-center justify-center py-16">
                                 <div className="relative mb-6">
                                     <div className="absolute inset-0 bg-accent-blue/20 rounded-full blur-xl animate-pulse"></div>
-                                    <img src="/images/resume-scan-2.gif" className="relative w-[200px] opacity-80" />
+                                    <img src="/images/resume-scan-2.gif" className="relative w-[200px] opacity-80" alt="Loading" />
                                 </div>
                                 <div className="text-center">
                                     <h3 className="text-xl font-semibold text-silver-200 mb-2">Generating insights...</h3>
