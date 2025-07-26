@@ -1,135 +1,210 @@
 <div align="center">
   <br />
-    <a href="https://www.youtube.com/watch?v=iYOz165wGkQ" target="_blank">
-      <img src="public/readme/hero.webp" alt="Project Banner">
-    </a>
   <br />
 
   <div>
-    <img alt="Static Badge" src="https://img.shields.io/badge/React-4c84f3?style=for-the-badge&logo=react&logoColor=white">
-        <img src="https://img.shields.io/badge/-Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-        <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
-    <img alt="Static Badge" src="https://img.shields.io/badge/Puter.js-181758?style=for-the-badge&logoColor=white">
+    <img alt="React" src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+    <img alt="Puter.js" src="https://img.shields.io/badge/Puter.js-7C3AED?style=for-the-badge&logoColor=white">
   </div>
 
-  <h3 align="center">AI Resume Analyzer</h3>
+  <h1 align="center">🤖 TASYA AI</h1>
+  <h3 align="center">AI-Powered Resume Analysis & Optimization Platform</h3>
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=XUkNR-JfHwo" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
+  <p align="center">
+    Transform your resume with intelligent AI feedback, ATS optimization scores, and personalized recommendations to help you land your dream job.
+  </p>
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+## 📋 Table of Contents
 
-1. ✨ [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets](#links)
-6. 🚀 [More](#more)
+1. 🎯 [About TASYA AI](#about)
+2. ✨ [Key Features](#features)
+3. 🛠️ [Technology Stack](#tech-stack)
+4. 🚀 [Getting Started](#quick-start)
+5. 📖 [How It Works](#how-it-works)
+6. 🎨 [User Interface](#interface)
+7. 🔧 [Development](#development)
 
-## 🚨 Tutorial
+## <a name="about">🎯 About TASYA AI</a>
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
+**TASYA AI** is a cutting-edge resume analysis platform that leverages artificial intelligence to help job seekers optimize their resumes for maximum impact. Whether you're a recent graduate, career changer, or experienced professional, TASYA AI provides intelligent insights to enhance your resume's effectiveness and improve your chances of passing Applicant Tracking Systems (ATS).
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+### 🎯 **Who Is It For?**
 
-<a href="https://www.youtube.com/watch?v=iYOz165wGkQ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+- **Job Seekers** looking to optimize their resumes for specific positions
+- **Career Counselors** helping clients improve their application materials
+- **HR Professionals** understanding what makes resumes stand out
+- **Students** preparing for their first job applications
+- **Career Changers** adapting their experience for new industries
 
-## <a name="introduction">✨ Introduction</a>
+### 🌟 **Why Choose TASYA AI?**
 
-Build Tasya AI, an advanced AI-powered Resume Analyzer with React, React Router, and Puter.js! Implement seamless auth, upload and store resumes, and match candidates to jobs using intelligent AI evaluations. Get custom feedback and ATS scores tailored to each listing—all wrapped in a sleek, pitch-black matte interface.
+- **Instant Analysis**: Get comprehensive feedback in seconds
+- **ATS Optimization**: Ensure your resume passes automated screening
+- **Industry-Specific Insights**: Tailored recommendations for your field
+- **Privacy-First**: Your data stays secure with client-side processing
+- **User-Friendly**: Beautiful, intuitive interface with no learning curve
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
+## <a name="features">✨ Key Features</a>
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+### 🔍 **Comprehensive Resume Analysis**
+- **ATS Compatibility Score**: Measure how well your resume performs with automated systems
+- **Content Quality Assessment**: Evaluate the effectiveness of your experience descriptions
+- **Structure Analysis**: Optimize formatting, sections, and overall organization
+- **Skills Gap Identification**: Discover missing keywords and relevant skills
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+### 🎯 **AI-Powered Feedback**
+- **Personalized Recommendations**: Get specific suggestions for improvement
+- **Tone & Style Analysis**: Ensure professional and impactful language
+- **Industry Benchmarking**: Compare against successful resumes in your field
+- **Action-Oriented Insights**: Clear, actionable steps to enhance your resume
 
-- **[React](https://react.dev/)** is a popular open‑source JavaScript library for building user interfaces using reusable components and a virtual DOM, enabling efficient, dynamic single-page and native apps.
+### 🔐 **Privacy & Security**
+- **Client-Side Processing**: Your resume data never leaves your browser
+- **Secure Storage**: Encrypted file storage with Puter.js technology
+- **No Registration Required**: Get started immediately without complex sign-ups
+- **GDPR Compliant**: Built with privacy regulations in mind
 
-- **[React Router v7](https://reactrouter.com/)** is the go‑to routing library for React apps, offering nested routes, data loaders/actions, error boundaries, code splitting, and SSR support—all with a smooth upgrade path from v6.
+### 💫 **Modern Experience**
+- **Beautiful Interface**: Sleek, modern design with smooth animations
+- **Responsive Design**: Perfect experience across all devices
+- **Real-Time Analysis**: Instant feedback as you upload and review
+- **Progress Tracking**: Monitor improvements over multiple uploads
 
-- **[Puter.com](https://jsm.dev/resumind-puter)** is an advanced, open-source internet operating system designed to be feature-rich, exceptionally fast, and highly extensible. Puter can be used as: A privacy-first personal cloud to keep all your files, apps, and games in one secure place, accessible from anywhere at any time.
+## <a name="tech-stack">🛠️ Technology Stack</a>
 
-- **[Puter.js](https://jsm.dev/resumind-puterjs)** is a tiny client‑side SDK that adds serverless auth, storage, database, and AI (GPT, Claude, DALL·E, OCR…) straight into your browser app—no backend needed and costs borne by users.
+TASYA AI is built with modern, cutting-edge technologies to ensure optimal performance and user experience:
 
-- **[Tailwind CSS](https://tailwindcss.com/)** is a utility-first CSS framework that allows developers to design custom user interfaces by applying low-level utility classes directly in HTML, streamlining the design process.
+### **Frontend Framework**
+- **[React 19](https://react.dev/)** - Latest React with concurrent features and improved performance
+- **[React Router v7](https://reactrouter.com/)** - Advanced routing with nested routes and data loading
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development for better code quality
 
-- **[TypeScript](https://www.typescriptlang.org/)** is a superset of JavaScript that adds static typing, providing better tooling, code quality, and error detection for developers, making it ideal for building large-scale applications.
+### **Styling & Animation**
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework for rapid UI development
+- **[Framer Motion](https://www.framer.com/motion/)** - Production-ready motion library for smooth animations
 
-- **[Vite](https://vite.dev/)** is a fast build tool and dev server using native ES modules for instant startup, hot‑module replacement, and Rollup‑powered production builds—perfect for modern web development.
+### **Backend & AI Processing**
+- **[Puter.js](https://puter.com/)** - Serverless backend with built-in AI capabilities
+- **Advanced AI Models** - GPT-powered analysis for intelligent resume feedback
+- **Client-Side Processing** - Privacy-first approach with browser-based operations
 
-- **[Zustand](https://github.com/pmndrs/zustand)** is a minimal, hook-based state management library for React. It lets you manage global state with zero boilerplate, no context providers, and excellent performance through selective state subscriptions.
+### **Development Tools**
+- **[Vite](https://vite.dev/)** - Lightning-fast build tool and development server
+- **[Zustand](https://github.com/pmndrs/zustand)** - Lightweight state management
+- **Modern WebGL** - Advanced visual effects with custom shaders
 
-## <a name="features">🔋 Features</a>
+## <a name="quick-start">🚀 Getting Started</a>
 
-👉 **Easy & convenient auth**: Handle authentication entirely in the browser using Puter.js—no backend or setup required.
+### **Prerequisites**
 
-👉 **Resume upload & storage**: Let users upload and store all their resumes in one place, safely and reliably.
+Ensure you have the following installed:
 
-👉 **AI resume matching**: Provide a job listing and get an ATS score with custom feedback tailored to each resume.
-
-👉 **Reusable, modern UI**: Built with clean, consistent components for a great-looking and maintainable interface.
-
-👉 **Code Reusability**: Leverage reusable components and a modular codebase for efficient development.
-
-👉 **Cross-Device Compatibility**: Fully responsive design that works seamlessly across all devices.
-
-👉 **Modern UI/UX**: Clean, responsive design built with Tailwind CSS and shadcn/ui for a sleek user experience.
-
-And many more, including code architecture and reusability.
-
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
+- [Node.js](https://nodejs.org/en) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
 
-**Cloning the Repository**
+### **Installation**
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/zenrsr/Tasya.git
+   cd tasya-ai
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   
+   Navigate to [http://localhost:5173](http://localhost:5173) to start using TASYA AI.
+
+## <a name="how-it-works">📖 How It Works</a>
+
+### **1. Upload Your Resume**
+- Drag and drop your PDF resume or click to browse
+- Secure client-side processing ensures privacy
+- Instant file validation and preview
+
+### **2. Add Job Context (Optional)**
+- Paste a job description for targeted analysis
+- Include company information for industry-specific insights
+- Specify your target role for personalized recommendations
+
+### **3. Get Instant Analysis**
+- Comprehensive ATS compatibility score
+- Detailed breakdown by category (Content, Structure, Tone, Skills)
+- Visual progress indicators and performance metrics
+
+### **4. Review Detailed Feedback**
+- Section-by-section improvement suggestions
+- Keyword optimization recommendations
+- Formatting and structure enhancements
+- Industry-specific best practices
+
+### **5. Track Your Progress**
+- Save multiple resume versions
+- Compare performance across different uploads
+- Monitor improvement over time
+
+## <a name="interface">🎨 User Interface</a>
+
+TASYA AI features a modern, intuitive interface designed for optimal user experience:
+
+- **🌊 Dynamic Background**: WebGL-powered animated background for visual appeal
+- **🎯 Clean Typography**: Beautiful gradient text effects with smooth animations
+- **📱 Responsive Design**: Perfect experience on desktop, tablet, and mobile
+- **🎭 Micro-Interactions**: Thoughtful animations that guide user attention
+- **🌙 Dark Theme**: Easy on the eyes with a professional aesthetic
+
+## <a name="development">🔧 Development</a>
+
+### **Available Scripts**
 
 ```bash
-git clone https://github.com/adrianhajdin/ai-resume-analyzer.git
-cd tasya-ai
-```
-
-**Installation**
-
-Install the project dependencies using npm:
-
-```bash
-npm install
-```
-
-**Running the Project**
-
-```bash
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Type checking
+npm run typecheck
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
+### **Project Structure**
 
-## <a name="links">🔗 Assets</a>
+```
+tasya-ai/
+├── app/                    # Main application code
+│   ├── components/         # Reusable UI components
+│   ├── routes/            # Page components and routing
+│   ├── lib/               # Utility functions and helpers
+│   └── app.css           # Global styles and theme
+├── public/                # Static assets
+├── types/                 # TypeScript type definitions
+└── ...config files
+```
 
-Assets and snippets used in the project can be found in the **[video kit](https://jsm.dev/resumind-kit)**.
+### **Contributing**
 
-<a href="https://jsm.dev/resumind-kit" target="_blank">
-  <img src="public/readme/videokit.webp" alt="Video Kit Banner">
-</a>
+We welcome contributions! Please feel free to submit issues, feature requests, or pull requests to help improve TASYA AI.
 
-## <a name="more">🚀 More</a>
+---
 
-**Advance your skills with Next.js Pro Course**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://jsm.dev/resumind-courses" target="_blank">
-  <img src="public/readme/jsmpro.webp" alt="Project Banner">
-</a>
+<div align="center">
+  <p>Made with ❤️ for job seekers worldwide</p>
+  <p>© 2024 TASYA AI. Empowering careers through intelligent resume analysis.</p>
+</div>
